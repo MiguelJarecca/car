@@ -1,78 +1,35 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import productService from '../services/ProductService';
 
 export default function Product() {
 
+    const [products, setProducts] = useState([]);
+
+    useEffect(() =>
+        {
+            const data = productService();
+            setProducts(data);
+        },[])
+        
+        console.log('hola', products)
   return (
     <>
     <div className='product'>
       <h3 className='title'>Productos</h3>
 
-      <article className='product-container'>
-        <div className="card">
-            <h2 className="card-title">Teclado Mecanico RGB</h2>
-                <p className="card-text">Teclado mecanico con luces RGB switches cherry red</p>
-                <div className='card-div'>
-                    <div className='card-price'>s/. 100</div>
-                    <button type='submit'>Agregar</button>
-                </div>
-        </div>
+        {products.map(prod => (
 
-        <div className="card">
-            <h2 className="card-title">Samsung Smart TV 55</h2>
-                <p className="card-text">Teclado mecanico con luces RGB switches cherry red</p>
-                <div className='card-div'>
-                    <div className='card-price'>s/. 100</div>
-                    <button type='submit'>Agregar</button>
+            <article className='product-container' key={prod.id}>
+                <div className="card">
+                    <h2 className="card-title">{prod.name}</h2>
+                        <p className="card-text">{prod.descrition}</p>
+                        <div className='card-div'>
+                            <div className='card-price'>{prod.price}</div>
+                            <button type='submit'>Agregar</button>
+                        </div>
                 </div>
-        </div>
-
-        <div className="card">
-            <h2 className="card-title">Audifono Bluetooth sony</h2>
-                <p className="card-text">Teclado mecanico con luces RGB switches cherry red</p>
-                <div className='card-div'>
-                    <div className='card-price'>s/. 100</div>
-                    <button type='submit'>Agregar</button>
-                </div>
-        </div>
-
-        <div className="card">
-            <h2 className="card-title">Memoria Corsair 8GB DDR5</h2>
-                <p className="card-text">Teclado mecanico con luces RGB switches cherry red</p>
-                <div className='card-div'>
-                    <div className='card-price'>s/. 100</div>
-                    <button type='submit'>Agregar</button>
-                </div>
-        </div>
-
-        <div className="card">
-            <h2 className="card-title">Asus Nvidia RTX</h2>
-                <p className="card-text">Teclado mecanico con luces RGB switches cherry red</p>
-                <div className='card-div'>
-                    <div className='card-price'>s/. 100</div>
-                    <button type='submit'>Agregar</button>
-                </div>
-        </div>
-
-        <div className="card">
-            <h2 className="card-title">CPU Intel Core i5</h2>
-                <p className="card-text">Teclado mecanico con luces RGB switches cherry red</p>
-                <div className='card-div'>
-                    <div className='card-price'>s/. 100</div>
-                    <button type='submit'>Agregar</button>
-                </div>
-        </div>
-
-        <div className="card">
-            <h2 className="card-title">Router</h2>
-                <p className="card-text">Teclado mecanico con luces RGB switches cherry red</p>
-                <div className='card-div'>
-                    <div className='card-price'>s/. 100</div>
-                    <button type='submit'>Agregar</button>
-                </div>
-        </div>
-      </article>
-
-    
+            </article>
+        ))}
 
     </div>  
 
