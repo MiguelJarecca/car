@@ -1,5 +1,5 @@
 
-import { products } from './../data/productos';
+import { products } from '../data/products';
 
 export default function ProductService() {
 
