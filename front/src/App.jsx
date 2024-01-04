@@ -21,14 +21,44 @@ function App() {
   const [cartItems, setCartItems] = useState(initialCartItems);
 
   const handleAddProductCart = (product) => {
+
+    const hasItem = cartItems.find((i)=>i.product.id === product.id);
+
+    if (hasItem) {
+      
+      // setCartItems([
+      //   ...cartItems.filter((i) => i.product.id !== product.id),
+      //   {
+      //     product,
+      //     quantity: hasItem.quantity + 1
+      //   }
+      // ])
+
+      setCartItems(
+        cartItems.map((i) => {
+          if (i.product.id === product.id) {
+            i.quantity = i.quantity + 1;
+          }
+          return i;
+        })
+      );
+
+    } else {
+      setCartItems([
+        ...cartItems, 
+        {
+          product,
+          quantity: 1,
+        }
+      ])
+    }
+
+  const handleDeleteProductCart = (id) => {
     setCartItems([
-      ...cartItems, 
-      {
-        product,
-        quantity: 71,
-        total: 14
-      }
-    ])
+      ...cartItems.filter((i) => i.product.id !== id)
+    ]);
+  }  
+
   }
 
   return (
@@ -36,7 +66,7 @@ function App() {
 
       <Product handler={handleAddProductCart}/>
 
-      <ShopCart cartItems={cartItems}/>
+      <ShopCart cartItems={cartItems} handleDelete={handleDeleteProductCart}/>
     </div>
   )
 }

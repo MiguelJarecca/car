@@ -22,7 +22,7 @@ export default function ShopCart({cartItems}) {
                         <td>{item.product.name}</td>
                         <td>{item.product.price}</td>
                         <td>{item.quantity}</td>
-                        <td>{item.total}</td>
+                        <td>{item.product.price * item.quantity}</td>
                         <td>eliminar</td>
                     </tr>
                 ))}

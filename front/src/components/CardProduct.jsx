@@ -3,8 +3,6 @@ import React from 'react'
 
 export default function CardProduct({handler, id, name, descrition,price}) {
 
-  console.log("pro",handler)
-
   const onAddProduct = (product) => {
     handler(product)
   }
