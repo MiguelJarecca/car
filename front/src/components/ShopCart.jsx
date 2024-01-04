@@ -1,7 +1,21 @@
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { CalculatorTotal } from '../services/ProductService';
 
-export default function ShopCart({cartItems}) {
+
+export default function ShopCart({handleDelete, cartItems}) {
+
+    const onDeleteItem = (id) =>  {
+        handleDelete(id)
+    }
+
+    const [total, setTotal] = useState(0);
+
+    useEffect(() => {
+        setTotal(
+            CalculatorTotal(cartItems)
+        );
+    },[cartItems])
 
   return (
     <div className="table">
@@ -23,7 +37,7 @@ export default function ShopCart({cartItems}) {
                         <td>{item.product.price}</td>
                         <td>{item.quantity}</td>
                         <td>{item.product.price * item.quantity}</td>
-                        <td>eliminar</td>
+                        <td><button onClick={()=>onDeleteItem(item.product.id)}>Eliminar</button></td>
                     </tr>
                 ))}
 
@@ -31,7 +45,7 @@ export default function ShopCart({cartItems}) {
             <tfoot>
                 <tr>
                     <td colSpan="3">Total</td>
-                    <td colSpan="2">1534</td>
+                    <td colSpan="2">{total}</td>
                 </tr>
             </tfoot>
         </table>

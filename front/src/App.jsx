@@ -51,14 +51,13 @@ function App() {
           quantity: 1,
         }
       ])
-    }
+    }  
+  }
 
   const handleDeleteProductCart = (id) => {
     setCartItems([
       ...cartItems.filter((i) => i.product.id !== id)
     ]);
-  }  
-
   }
 
   return (
@@ -66,7 +65,12 @@ function App() {
 
       <Product handler={handleAddProductCart}/>
 
-      <ShopCart cartItems={cartItems} handleDelete={handleDeleteProductCart}/>
+      {cartItems?.length <= 0 ||
+        (
+          <ShopCart cartItems={cartItems} handleDelete={handleDeleteProductCart}/>
+        ) 
+      }
+
     </div>
   )
 }

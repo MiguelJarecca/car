@@ -1,7 +1,7 @@
 
 import React from 'react'
 
-export default function CardProduct({handler, id, name, descrition,price}) {
+export default function CardProduct({handler, id, name, descrition, price}) {
 
   const onAddProduct = (product) => {
     handler(product)
