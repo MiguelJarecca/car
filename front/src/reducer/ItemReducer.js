@@ -15,15 +15,17 @@ export const ItemReducer = (state = [], action) => {
         case 'UpdateQuantityProductCard':
                 return state.map((i) => {
                     if (i.product.id === action.payload.id) {
-                        i.quantity = i.quantity + 1;
+                        return {
+                            ...i,
+                            quantity: i.quantity + 1,
+                        };
                     }
                     return i; 
                 });
     
         case 'DeleteProductCard':
-            return [
-                ...state.filter((i) => i.product.id !== action.payload)
-            ];
+            //Devuelve un nuevo array menos un item.
+            return state.filter((i) => i.product.id !== action.payload);
     
         default:
             return state;

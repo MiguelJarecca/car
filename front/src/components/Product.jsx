@@ -15,7 +15,6 @@ export default function Product({handler}) {
   return (
     <>
     <div className='product'>
-      <h3 className='title'>Productos</h3>
 
         {products.map(prod => (
 
