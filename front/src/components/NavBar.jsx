@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom"
 
 export const NavBar = () => {
 
@@ -6,8 +7,14 @@ export const NavBar = () => {
             <h3 className='title'>Productos</h3>
 
             <ul>
-                <li>Catálogo</li>
-                <li>Carro</li>
+                <li><NavLink 
+                        className={'style-link'} 
+                        to='/catalog'>Catálogo
+                    </NavLink> </li>
+                <li><NavLink 
+                        className={'style-link'} 
+                        to='/cart'>Carro
+                    </NavLink> </li>
             </ul>
 
         </div>

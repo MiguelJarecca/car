@@ -34,6 +34,7 @@ body {
 
 .title {
   font-size: 2.8rem;
+  color: #db1a9e;
 }
 
 .nav-bar ul {
@@ -46,9 +47,12 @@ body {
 .nav-bar ul li {
   list-style: none;
   color: var(--text-color);
+  text-decoration: none;
 }
 
-
+.style-link {
+  text-decoration: none;
+}
 
 /*------------------CARD------------------------*/
 .product {
@@ -83,7 +87,7 @@ body {
 
 .card-price {
   padding: 5px;
-  background: yellow;
+  background: #e671bf;
   border-radius: 5px;
   width: 70px;
   font-size: 1.5rem;
@@ -92,5 +96,66 @@ body {
 .card  button {
   width: 90px;
   padding: 5px;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
+}
+
+.card button:hover {
+  color: #db1a9e;
+  border-color: #db1a9e;
+}
+
+/*------------------CARRO-DE-COMPRAS------------------------*/
+
+.table-container {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0;
+  gap: 2rem;
+}
+
+.table {
+  font-size: 1.7rem;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th, td {
+  border: 1px solid #dddddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.table tr:nth-child(even) {
+  background-color: #edb6db; /* Color de fondo para filas pares */
+}
+
+th {
+  background-color: #e671bf;
+  color: white;
+}
+
+tr:hover {
+  background-color: #edb6db;
+  cursor: pointer;
+}
+
+.button-delete {
+  padding: 3px 10px;
+}
+
+.button-cart {
+  width: 150px;
+  padding: 5px;
+  font-size: 1.7rem;
+  cursor: pointer;
+}
+
+.button-cart:hover {
+  color: #db1a9e;
+  border-color: #db1a9e;
+}
+
+.button-delete:hover {
+  color: #db1a9e;
+  border-color: #db1a9e;
 }

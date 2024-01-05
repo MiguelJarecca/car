@@ -23,9 +23,8 @@ export default function ShopCart({handleDelete, cartItems}) {
     }
 
   return (
-    <div className="table">
-        <h3>Carro de compras</h3>
-        <table>
+    <div className="table-container">
+        <table className='table'>
             <thead>
                 <tr>
                     <th>Producto</th>
@@ -39,10 +38,13 @@ export default function ShopCart({handleDelete, cartItems}) {
                 {cartItems.map(item => (
                     <tr key={item.product.id}>
                         <td>{item.product.name}</td>
-                        <td>{item.product.price}</td>
+                        <td>S/. {item.product.price}</td>
                         <td>{item.quantity}</td>
-                        <td>{item.product.price * item.quantity}</td>
-                        <td><button onClick={()=>onDeleteItem(item.product.id)}>Eliminar</button></td>
+                        <td>S/. {item.product.price * item.quantity}</td>
+                        <td><button 
+                                className='button-delete' 
+                                onClick={()=>onDeleteItem(item.product.id)}>Eliminar
+                            </button></td>
                     </tr>
                 ))}
 
@@ -50,12 +52,12 @@ export default function ShopCart({handleDelete, cartItems}) {
             <tfoot>
                 <tr>
                     <td colSpan="3">Total</td>
-                    <td colSpan="2">{total}</td>
+                    <td colSpan="2">S/. {total}</td>
                 </tr>
             </tfoot>
         </table>
 
-        <button onClick={onCatalog}>Seguir comprando</button>                
+        <button className='button-cart' onClick={onCatalog}>Seguir comprando</button>                
 
     </div>   
   )

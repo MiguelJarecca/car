@@ -2,7 +2,7 @@
 export const products = [
     {
         id: 1,
-        name: 'Teclado Mecanico RGB',
+        name: 'Teclado Mecánico RGB',
         description: 'Teclado mecanico con luces RGB switches cherry red',
         price: 100
     },
@@ -14,7 +14,7 @@ export const products = [
     },
     {
         id: 3,
-        name: 'Audifono Bluetooth sony',
+        name: 'Audífono Bluetooth sony',
         description: 'Audifono Bluetooth para smartphone',
         price: 50
     },
@@ -39,7 +39,7 @@ export const products = [
     {
         id: 7,
         name: 'Router',
-        description: 'Capacidad 250 Megas',
-        price: 120
+        description: 'TP-Link Ac 1200 Archer C50 inalámbrico',
+        price: 180
     }
 ]
