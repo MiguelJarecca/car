@@ -15,6 +15,9 @@ export default function ShopCart({handleDelete, cartItems}) {
         setTotal(
             CalculatorTotal(cartItems)
         );
+        //guardamos en la Sesion Storage
+        sessionStorage.setItem('cart', JSON.stringify(cartItems));
+
     },[cartItems])
 
   return (

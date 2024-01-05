@@ -1,31 +1,24 @@
-import { useState } from 'react'
+import { useReducer, useState } from 'react'
 import './App.css'
 import Product from './components/Product'
 import ShopCart from './components/ShopCart';
+import { ItemReducer } from './reducer/ItemReducer';
 
-const initialCartItems = [
-  // {
-  //   product: {
-  //     id: 1,
-  //     name: 'Teclado Mecanico RGB',
-  //     description: 'Teclado mecanico con luces RGB switches cherry red',
-  //     price: 's/. 100'
-  //   },
-  //   quantity: 1,
-  //   total: 11
-  // }
-]
+//Traemos la informacion del Session Storage
+//Si no tiene ningun item colocamos un array vacio para que pueda inicializar
+const initialCartItems = JSON.parse(sessionStorage.getItem('cart')) || [];
 
 function App() {
 
-  const [cartItems, setCartItems] = useState(initialCartItems);
+  // const [cartItems, setCartItems] = useState(initialCartItems);
+  const [cartItems, dispach] = useReducer(ItemReducer, initialCartItems);
 
   const handleAddProductCart = (product) => {
 
     const hasItem = cartItems.find((i)=>i.product.id === product.id);
 
     if (hasItem) {
-      
+      // Otra forma de aumentar la cantidad con filter
       // setCartItems([
       //   ...cartItems.filter((i) => i.product.id !== product.id),
       //   {
@@ -34,30 +27,52 @@ function App() {
       //   }
       // ])
 
-      setCartItems(
-        cartItems.map((i) => {
-          if (i.product.id === product.id) {
-            i.quantity = i.quantity + 1;
-          }
-          return i;
-        })
-      );
+      // setCartItems(
+      //   cartItems.map((i) => {
+      //     if (i.product.id === product.id) {
+      //       i.quantity = i.quantity + 1;
+      //     }
+      //     return i;
+      //   })
+      // );
+
+      dispach(
+        {
+          type: 'UpdateQuantityProductCard',
+          payload: product,
+        }
+      )
 
     } else {
-      setCartItems([
-        ...cartItems, 
+      // setCartItems([
+      //   ...cartItems, 
+      //   {
+      //     product,
+      //     quantity: 1,
+      //   }
+      // ])
+
+      dispach(
         {
-          product,
-          quantity: 1,
+          type: 'AddProductCard',
+          payload: product,
         }
-      ])
+      )
     }  
   }
 
   const handleDeleteProductCart = (id) => {
-    setCartItems([
-      ...cartItems.filter((i) => i.product.id !== id)
-    ]);
+    // setCartItems([
+    //   ...cartItems.filter((i) => i.product.id !== id)
+    // ]);
+  
+  dispach(
+    {
+      type: 'DeleteProductCard',
+      payload: id,
+    }
+  )  
+
   }
 
   return (
