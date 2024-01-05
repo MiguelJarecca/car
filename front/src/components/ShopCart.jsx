@@ -1,21 +1,26 @@
 
 import React, { useEffect, useState } from 'react'
 import { CalculatorTotal } from '../services/ProductService';
+import { useNavigate } from 'react-router-dom'
 
 
 export default function ShopCart({handleDelete, cartItems}) {
 
+    const [total, setTotal] = useState(0);
+    const navegate = useNavigate();
+
     const onDeleteItem = (id) =>  {
         handleDelete(id)
     }
-
-    const [total, setTotal] = useState(0);
-
     useEffect(() => {
         setTotal(
             CalculatorTotal(cartItems)
         );
     },[cartItems])
+
+    const onCatalog = () => {
+        navegate('/catalog');
+    }
 
   return (
     <div className="table">
@@ -49,6 +54,9 @@ export default function ShopCart({handleDelete, cartItems}) {
                 </tr>
             </tfoot>
         </table>
+
+        <button onClick={onCatalog}>Seguir comprando</button>                
+
     </div>   
   )
 }

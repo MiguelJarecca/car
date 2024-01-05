@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import Product from './components/Product'
 import ShopCart from './components/ShopCart';
 import { useItemsCard } from './hooks/useItemsCart';
+import { NavBar } from './components/NavBar';
 
 function App() {
 
@@ -10,8 +11,8 @@ function App() {
 
   return (
     <div className='container'>
-
-    <h3 className='title'>Productos</h3>
+      
+      <NavBar />
 
       <Routes>
         <Route 
