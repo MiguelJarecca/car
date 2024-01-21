@@ -1,8 +1,7 @@
 
-import { products } from '../data/products';
-
-export default function ProductService() {
-
+export const ProductService = async() => {
+  const response = await fetch('http://localhost:8080/api/products');
+  const products = await response.json(); 
   return products;
 }
 
